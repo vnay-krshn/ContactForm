@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +15,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body class="bg-light">
-    <form class="form-group mt-5 p-3">
+    <form id="idForm" class="form-group mt-5 p-3">{% csrf_token %}
         <h2 class="ml-5 mb-4">Contact form</h2>
         <label for="name" class="ml-5">Name</label>
-        <input type="text" id="name" class="form-control ml-5 w-25 mb-3">
+        <input type="text" id="name" class="form-control ml-5 w-25 mb-3" id="idname" autocomplete="off">
         <label for="email" class="ml-5">Email</label>
-        <input type="email" id="email" class="form-control ml-5 w-25 mb-3">
+        <input type="email" id="email" class="form-control ml-5 w-25 mb-3" id="idemail" autocomplete="off">
         <label for="phone" class="ml-5">Phone</label>
-        <input type="number" id="phone" class="form-control ml-5 w-25 mb-3">
+        <input type="number" id="phone" class="form-control ml-5 w-25 mb-3" id="idphone" autocomplete="off">
         <label for="description" class="ml-5">Description</label>
-        <input type="text" id="description" class="form-control ml-5 w-25 mb-3">
+        <input type="text" id="description" class="form-control ml-5 w-25 mb-3" id="descrId" autocomplete="off">
         <button type="submit" class="btn btn-danger ml-5 mb-3 mt-3">Submit</button>
     </form>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="jquery-3.5.1.min.js"></script>
-    <script src="{% static 'main.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'contactapp/main.js' %}"></script>
+    
 </body>
 </html>

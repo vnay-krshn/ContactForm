@@ -14,7 +14,7 @@ def index(request):
 @api_view(['GET','POST'])
 
 def contactDetails(request):
-    if request.method == 'GET'
+    if request.method == 'GET':
         contacts = Contacts.objects.all()
         name = request.GE.get('name', None)
         if name is not None:
@@ -28,7 +28,7 @@ def contactDetails(request):
         if contactSerial.is_valid():
             contactSerial.save()
             return JsonResponse(contactSerial.data, status = status.HTTP_201_CREATED)
-         return JsonResponse(contactSerial.errors, status = status.HTTP_400_BAD_REQUEST)
+        return JsonResponse(contactSerial.errors, status = status.HTTP_400_BAD_REQUEST)
 
 
 
