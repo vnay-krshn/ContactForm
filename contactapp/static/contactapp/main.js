@@ -18,3 +18,12 @@ $('#submit').on('submit','#idForm',function(e){
     })
 });
 
+var showTable= document.querySelector('.table')
+var showButton = document.querySelector("#show")
+showTable.style.visibility="hidden"
+
+showButton.addEventListener('click',function(e){
+    e.preventDefault()
+   showTable.style.visibility="visible"
+})
+
