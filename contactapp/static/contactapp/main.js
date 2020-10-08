@@ -1,8 +1,8 @@
 $(document).on('submit','#idForm',function(e){
-    e.preventDefault()
+    e.preventDefault();
 
     $.ajax({
-        type:'POST',
+        type:'post',
         url : 'api/contactapp',
         data:{
             name: $('#idname').val(),

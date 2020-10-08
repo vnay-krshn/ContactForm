@@ -23,6 +23,7 @@ def contactDetails(request):
         return JsonResponse(contactSerial.data, safe = False)
     
     elif request.method == 'POST':
+        print(request)
         contactData = JSONParser().parse(request)
         contactSerial = ContactSerializer(data = contactData)
         if contactSerial.is_valid():
