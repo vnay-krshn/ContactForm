@@ -1,17 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.parsers import JSONParser
+from .forms import contactForm
 
 from contactapp.models import Contacts
 from contactapp.serializer import ContactSerializer
 from rest_framework.decorators import api_view
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 def index(request):
-    items = Contacts.objects.all()
-    context = {'items': items}
+    items = Contacts.objects.order_by('id')
+    form = contactForm()
+    context = {'items': items, 'form': form}
     return render(request, 'contactapp/index.html', context)
+
+@require_POST
+def completed(request):
+    form = contactForm(request.POST)
+    if form.is_valid():
+        new = Contacts(name = request.POST['name'], email = request.POST['email'], phone = request.POST['phone'], description = request.POST['description'])
+        new.save()
+    return redirect('index')
 
 @api_view(['GET','POST'])
 

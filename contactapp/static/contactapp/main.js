@@ -4,6 +4,7 @@ $('#submit').on('submit','#idForm',function(e){
     $.ajax({
         type:'post',
         url : 'api/contactapp',
+        dataType:'json',
         data:{
             name: $('#idname').val(),
             email: $('#idemail').val(),
