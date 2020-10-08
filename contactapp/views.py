@@ -16,7 +16,7 @@ def index(request):
 def contactDetails(request):
     if request.method == 'GET':
         contacts = Contacts.objects.all()
-        name = request.GE.get('name', None)
+        name = request.GET.get('name', None)
         if name is not None:
             contacts = contacts.filter(name_icontains = name)
         contactSerial = ContactSerializer(contacts, many= True)

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'phone_field',
     'contactapp.apps.ContactappConfig',
     'corsheaders',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
