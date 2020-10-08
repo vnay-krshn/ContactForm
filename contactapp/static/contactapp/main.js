@@ -1,6 +1,5 @@
 $('#submit').on('submit','#idForm',function(e){
-    e.preventDefault();
-
+    e.preventDefault()
     $.ajax({
         type:'post',
         url : 'api/contactapp',
@@ -16,6 +15,7 @@ $('#submit').on('submit','#idForm',function(e){
             alert("Bingo")
         }
     })
+
 });
 
 var showTable= document.querySelector('.table')
@@ -24,6 +24,8 @@ showTable.style.visibility="hidden"
 
 showButton.addEventListener('click',function(e){
     e.preventDefault()
-   showTable.style.visibility="visible"
+    showTable.style.visibility="visible"
 })
+
+
 

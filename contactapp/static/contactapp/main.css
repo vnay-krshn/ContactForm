@@ -1,7 +1,7 @@
 .table{
     position: absolute;
     top: 12%;
-    width: 40%;
+    width: 50%;
     left:45%;
 
 }
@@ -11,5 +11,4 @@ form{
    margin-left: 70px;
    width: 30%;
    margin-top: 50px;
-   background-color: aqua;
 }
