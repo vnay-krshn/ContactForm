@@ -1,4 +1,4 @@
-$(document).on('submit','#idForm',function(e){
+$('#submit').on('submit','#idForm',function(e){
     e.preventDefault();
 
     $.ajax({
@@ -15,5 +15,5 @@ $(document).on('submit','#idForm',function(e){
             alert("Bingo")
         }
     })
-})
+});
 

@@ -9,7 +9,9 @@ from rest_framework.decorators import api_view
 
 # Create your views here.
 def index(request):
-    return render(request, 'contactapp/index.html')
+    items = Contacts.objects.all()
+    context = {'items': items}
+    return render(request, 'contactapp/index.html', context)
 
 @api_view(['GET','POST'])
 
@@ -23,7 +25,6 @@ def contactDetails(request):
         return JsonResponse(contactSerial.data, safe = False)
     
     elif request.method == 'POST':
-        print(request)
         contactData = JSONParser().parse(request)
         contactSerial = ContactSerializer(data = contactData)
         if contactSerial.is_valid():
@@ -31,7 +32,7 @@ def contactDetails(request):
             return JsonResponse(contactSerial.data, status = status.HTTP_201_CREATED)
         return JsonResponse(contactSerial.errors, status = status.HTTP_400_BAD_REQUEST)
 
-
+       
 
 
 

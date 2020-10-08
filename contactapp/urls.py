@@ -4,6 +4,6 @@ from django.conf.urls import url
 
 urlpatterns=[
     path('',views.index, name = 'index'),
-    url(r'^api/contactapp$', views.contactDetails),
+    url(r'^api/contactapp$', views.contactDetails, name = 'contactDetails'),
 
 ]

@@ -15,17 +15,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body class="bg-light">
-    <form id="idForm" class="form-group mt-5 ml-5 p-3">{% csrf_token %}
+    <form id="idForm" method="POST" action="{% url 'contactDetails' %}" class="form-group mt-5 ml-5 p-3">{% csrf_token %}
         <h2 class="ml-5 mb-4">Contact form</h2>
         <label for="idname" class="ml-5">Name</label>
-        <input type="text" class="form-control ml-5 w-25 mb-3" id="idname" name="Name">
+        <input type="text" class="form-control ml-5 w-25 mb-3" id="idname" name="name">
         <label for="idemail" class="ml-5">Email</label>
-        <input type="email" class="form-control ml-5 w-25 mb-3" id="idemail" name="Email">
+        <input type="email" class="form-control ml-5 w-25 mb-3" id="idemail" name="email">
         <label for="idphone" class="ml-5">Phone</label>
-        <input type="number" class="form-control ml-5 w-25 mb-3" id="idphone" name="Phone">
+        <input type="number" class="form-control ml-5 w-25 mb-3" id="idphone" name="phone">
         <label for="descrId" class="ml-5">Description</label>
-        <input type="text" class="form-control ml-5 w-25 mb-3" id="descrId" name="Description">
-        <button type="submit" class="btn btn-danger ml-5 mb-3 mt-3">Submit</button>
+        <input type="text" class="form-control ml-5 w-25 mb-3" id="descrId" name="description">
+        <button type="submit" id="submit" class="btn btn-danger ml-5 mb-3 mt-3">Submit</button>
         <button type="submit" class="btn btn-success ml-3 mb-3 mt-3">User Details</button>
     </form>
     <div>
