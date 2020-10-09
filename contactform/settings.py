@@ -83,10 +83,10 @@ WSGI_APPLICATION = 'contactform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'contactsdb',
-        'USER': 'postgres',
-        'PASSWORD':'Postgres@123',
-        'HOST': '127.0.0.1',
+        'NAME': 'dbfgms4usmr1nv',
+        'USER': 'yxjhwuyknjyqei',
+        'PASSWORD':'67d188494880bd568ae61df6acbfc670e9d844b0d0584ec06cacddf56f36ab96',
+        'HOST': 'ec2-34-233-43-35.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }
