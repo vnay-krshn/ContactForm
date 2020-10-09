@@ -18,7 +18,7 @@
     <form id="idForm" method="POST" action="{% url 'completed' %}" class="form-group bg-light p-3">{% csrf_token %}
         <h2>Contact form</h2>
         <label for="idname">Name</label>
-        <input value="" type="text" class="form-control" id="idname" name="name">
+        <input value="" type="text" class="form-control" id="idname" name="name">{{form.errors.name}}
         <label for="idemail">Email</label>
         <input type="email" class="form-control  mb-3" id="idemail" name="email">
         <label for="idphone">Phone</label>
