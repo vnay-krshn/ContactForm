@@ -14,7 +14,17 @@ from django.views.decorators.http import require_POST
 def index(request):
     items = Contacts.objects.all()
     context = {'items': items}
-    return render(request, 'contactapp/index.html', context)
+    return render(request, 'contactapp/index.html',context)
+
+def fetch(request):
+    
+    name = request.GET.get('name')
+    email = request.GET.get('email')
+    phone = request.GET.get('phone')
+    description = request.GET.get('description')
+    details = {'name': name, 'email': email, 'phone': phone, 'description': description}
+    if request.is_ajax():
+        return JsonResponse(details,status=200)
 
 @require_POST
 def completed(request):
