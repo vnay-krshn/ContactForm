@@ -1,3 +1,5 @@
+var response = document.querySelector(".response")
+
 function toValidate(){
     var idName=document.getElementById('idname').value
     var idEmail=document.getElementById('idemail').value
@@ -19,29 +21,57 @@ function toValidate(){
         errName.innerHTML = " "
     }
     else{
-        errName.innerHTML = "Invalid"
+        if(idName == ''){
+           errName.innerHTML = "Cannot leave empty" 
+        }
+        else{
+        errName.innerHTML = "Must contain more than 3 characters"
+        }
         flag = false
     }
     if(emailCheck.test(idEmail)){
         errEmail.innerHTML = " "
     }
     else{
-        errEmail.innerHTML = "Invalid"
+        if(idEmail == ''){
+            errEmail.innerHTML = "Cannot leave empty"
+        }
+        else{
+        errEmail.innerHTML = "Invalid email format"
+        }
         flag = false
     }
     if(phoneCheck.test(idPhone)){
         errPhone.innerHTML = " "
+        
+        if(idPhone.length === 0){
+            errPhone.innerHTML = "Cannot leave empty"
+         }
     }
     else{
-        errPhone.innerHTML = "Invalid"
+        errPhone.innerHTML = "Minimum 10 characters required"
         flag = false
     }
     if(idDescr.length>20){
         errDescr.innerHTML = " "
     }
     else{
-        errDescr.innerHTML = "Invalid"
+        if(idDescr.length==0){
+            errDescr.innerHTML = "Cannot leave empty"
+        }
+        else{
+        errDescr.innerHTML = "Minimum 20 characters required"
+        }
         flag = false
+    }
+
+    if(flag==true){
+        $('.response').css('color','green')
+        response.innerHTML="Form submitted successfully"
+      }
+    else{
+        $('.response').css('color','red')
+        response.innerHTML="Error occured"
     }
 
     return flag
@@ -57,7 +87,8 @@ $(document).ready(function(){
         e.preventDefault()
 
         if(flag == true){
-            $.ajax({
+            
+            req = $.ajax({
                     type:'POST',
                     url : '/completed',
                     dataType:'json',
@@ -69,6 +100,8 @@ $(document).ready(function(){
                         csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
                     },
                 })
+         
+        
     }
     else
         return
