@@ -3,6 +3,7 @@ from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.parsers import JSONParser
 from .forms import contactForm
+from django.http import HttpResponse
 
 from contactapp.models import Contacts
 from contactapp.serializer import ContactSerializer
@@ -11,18 +12,25 @@ from django.views.decorators.http import require_POST
 
 # Create your views here.
 def index(request):
-    items = Contacts.objects.order_by('id')
-    form = contactForm()
-    context = {'items': items, 'form': form}
+    items = Contacts.objects.all()
+    context = {'items': items}
     return render(request, 'contactapp/index.html', context)
 
 @require_POST
 def completed(request):
-    form = contactForm(request.POST)
-    if form.is_valid():
-        new = Contacts(name = request.POST['name'], email = request.POST['email'], phone = request.POST['phone'], description = request.POST['description'])
-        new.save()
-    return redirect('index')
+  if request.method == 'POST':
+      name = request.POST['name']
+      email = request.POST['email']
+      phone = request.POST['phone']
+      description = request.POST['description']
+
+      Contacts.objects.create(
+          name = name,
+          email = email,
+          phone = phone,
+          description = description
+      )
+      return redirect('index')
 
 @api_view(['GET','POST'])
 

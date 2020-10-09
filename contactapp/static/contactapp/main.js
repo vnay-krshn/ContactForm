@@ -1,82 +1,85 @@
-var showTable= document.querySelector('.table')
-var showButton = document.querySelector("#show")
-showTable.style.visibility="hidden"
-
-showButton.addEventListener('click',function(e){
-    e.preventDefault()
-    showTable.style.visibility="visible"
-})
-
 function toValidate(){
-    var name = document.querySelector("idname").value 
-    var email = document.querySelector("idemail").value
-    var phone = document.querySelector("idphone").value
-    var descr = $('#descrId').val()
+    var idName=document.getElementById('idname').value
+    var idEmail=document.getElementById('idemail').value
+    var idPhone=document.getElementById('idphone').value
+    var idDescr=document.getElementById('descrId').value
 
-    var checkName = /^[a-zA-Z]{3,100}$/
-    var checkEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*/
-    var checkPhone = /(^$)|(^\d{10}$)/
-    var descrCheck = /^.{20,}$/
-    var f = true
+    var errName=document.getElementById('errName')
+    var errEmail=document.getElementById('errEmail')
+    var errPhone=document.getElementById('errPhone')
+    var errDescr=document.getElementById('errDescr')
 
-        if (checkName.test(name)){
-            console.log("all ok")
-        }
-        else{
-            alert("invalid name")
-            f = false
-        }
+    var nameCheck = /^[a-zA-Z ]{3,100}$/
+    var emailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    var phoneCheck = /(^$)|(^\d{10}$)/
+    
+    var flag = true
 
-        if (checkEmail.test(email)){
-            console.log("all ok")
-        }
-        else{
-            alert("invalid email")
-            f = false
-            }
+    if(nameCheck.test(idName)){
+        errName.innerHTML = " "
+    }
+    else{
+        errName.innerHTML = "Invalid"
+        flag = false
+    }
+    if(emailCheck.test(idEmail)){
+        errEmail.innerHTML = " "
+    }
+    else{
+        errEmail.innerHTML = "Invalid"
+        flag = false
+    }
+    if(phoneCheck.test(idPhone)){
+        errPhone.innerHTML = " "
+    }
+    else{
+        errPhone.innerHTML = "Invalid"
+        flag = false
+    }
+    if(idDescr.length>20){
+        errDescr.innerHTML = " "
+    }
+    else{
+        errDescr.innerHTML = "Invalid"
+        flag = false
+    }
 
-        if (checkPhone.test(phone)){
-            console.log("all ok")
-        }
-        else{
-            alert("invalid phone")
-            f = false
-        }
+    return flag
 
-        if (descrCheck.test(descr)){
-            console.log("all ok")
-        }
-        else{
-            alert("invalid descr")
-            f = false
-        
-        }
-    return f
+
 }
-
 
 $(document).ready(function(){
     $('#submit').click(function(e){
-        var flag=toValidate()
+
+        flag = toValidate()
+
         e.preventDefault()
-        if(flag==true){
+
+        if(flag == true){
             $.ajax({
-                type:'post',
-                url : 'api/contactapp',
-                dataType:'json',
-                data:{
-                    name: $('#idname').val(),
-                    email: $('#idemail').val(),
-                    phone: $('#idphone').val(),
-                    description: $('#descrId').val(),
-                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-                },
-                success: function(){
-                    alert("Bingo")
-                }
-            })
-        }
-    })
+                    type:'POST',
+                    url : '/completed',
+                    dataType:'json',
+                    data:{
+                        name: $('#idname').val(),
+                        email: $('#idemail').val(),
+                        phone: $('#idphone').val(),
+                        description: $('#descrId').val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                    },
+                })
+    }
+    else
+        return
+    
+    });
 })
+
+
+
+
+
+
 
 
