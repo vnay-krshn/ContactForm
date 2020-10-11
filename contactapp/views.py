@@ -34,7 +34,7 @@ def completed(request):
       phone = request.POST['phone']
       description = request.POST['description']
 
-      if phone == '':
+      if phone == None:
           phone = None
 
       Contacts.objects.create(
