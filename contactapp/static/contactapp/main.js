@@ -21,47 +21,54 @@ function toValidate(){
         errName.innerHTML = " "
     }
     else{
-        if(idName == ''){
-           errName.innerHTML = "Cannot leave empty" 
+            if(idName == ''){
+                 errName.innerHTML = "Cannot leave empty" 
+            }
+            else{
+                if(isNaN(idName) == false){
+                    errName.innerHTML = "Invalid name" 
+                }
+                else{
+                    errName.innerHTML = "Must contain more than 3 characters"
+                }
+            }
+            flag = false
         }
-        else{
-        errName.innerHTML = "Must contain more than 3 characters"
-        }
-        flag = false
-    }
+
+
     if(emailCheck.test(idEmail)){
         errEmail.innerHTML = " "
     }
     else{
-        if(idEmail == ''){
-            errEmail.innerHTML = "Cannot leave empty"
-        }
-        else{
-        errEmail.innerHTML = "Invalid email format"
-        }
+            if(idEmail == ''){
+                errEmail.innerHTML = "Cannot leave empty"
+             }
+            else{
+                errEmail.innerHTML = "Invalid email format"
+            }
         flag = false
     }
-    if(phoneCheck.test(idPhone)){
-        errPhone.innerHTML = " "
-        
-        if(idPhone.length === 0){
-            errPhone.innerHTML = "Cannot leave empty"
+
+
+   if(phoneCheck.test(idPhone)){
+        errPhone.innerHTML = " " 
          }
-    }
     else{
-        errPhone.innerHTML = "Minimum 10 characters required"
+        errPhone.innerHTML = "Invalid phone number"
         flag = false
-    }
+        }
+
+
     if(idDescr.length>20){
         errDescr.innerHTML = " "
     }
     else{
-        if(idDescr.length==0){
-            errDescr.innerHTML = "Cannot leave empty"
-        }
-        else{
-        errDescr.innerHTML = "Minimum 20 characters required"
-        }
+            if(idDescr.length==0){
+                errDescr.innerHTML = "Cannot leave empty"
+            }
+            else{
+                errDescr.innerHTML = "Minimum 20 characters required"
+            }
         flag = false
     }
 
@@ -126,8 +133,6 @@ $(document).ready(function(){
                 })                
         
     }
-    else
-        return
     
     });
 })
