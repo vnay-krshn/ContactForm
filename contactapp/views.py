@@ -42,24 +42,7 @@ def completed(request):
       )
       return redirect('index')
 
-@api_view(['GET','POST'])
 
-def contactDetails(request):
-    if request.method == 'GET':
-        contacts = Contacts.objects.all()
-        name = request.GET.get('name', None)
-        if name is not None:
-            contacts = contacts.filter(name_icontains = name)
-        contactSerial = ContactSerializer(contacts, many= True)
-        return JsonResponse(contactSerial.data, safe = False)
-    
-    elif request.method == 'POST':
-        contactData = JSONParser().parse(request)
-        contactSerial = ContactSerializer(data = contactData)
-        if contactSerial.is_valid():
-            contactSerial.save()
-            return JsonResponse(contactSerial.data, status = status.HTTP_201_CREATED)
-        return JsonResponse(contactSerial.errors, status = status.HTTP_400_BAD_REQUEST)
 
        
 
