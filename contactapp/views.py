@@ -1,12 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http.response import JsonResponse
 from rest_framework import status
-from rest_framework.parsers import JSONParser
-from django.http import HttpResponse
 
 from contactapp.models import Contacts
-from contactapp.serializer import ContactSerializer
-from rest_framework.decorators import api_view
 from django.views.decorators.http import require_POST
 
 # Create your views here.
@@ -16,7 +12,6 @@ def index(request):
     return render(request, 'contactapp/index.html',context)
 
 def fetch(request):
-    
     name = request.GET.get('name')
     email = request.GET.get('email')
     phone = request.GET.get('phone')
