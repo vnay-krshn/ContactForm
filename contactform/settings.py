@@ -26,7 +26,7 @@ SECRET_KEY = 'h7k%mi*2e_%(4f0i5gg#nx9xukd2cta%c++c*emd_@0d6hqw^h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'contactform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbfgms4usmr1nv',
-        'USER': 'yxjhwuyknjyqei',
-        'PASSWORD':'67d188494880bd568ae61df6acbfc670e9d844b0d0584ec06cacddf56f36ab96',
-        'HOST': 'ec2-34-233-43-35.compute-1.amazonaws.com',
+        'NAME': 'contactsdb',
+        'USER': 'postgres',
+        'PASSWORD':'Postgres@123',
+        'HOST': '127.0.0.1',
         'PORT': '5432'
 
     }

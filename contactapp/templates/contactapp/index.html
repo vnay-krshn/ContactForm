@@ -32,33 +32,7 @@
         <label class="ml-3 mt-3 response"></label>
     </form>
    
-<table class="table border mb-0">
-       <thead class="headtable bg-dark text-white">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone number</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for item in items %}
-        <tr class="bg-white"> 
-            <td class="itemName">{{item.name}}</td>
-            <td class="itemEmail">{{item.email}}</td>
-            <td class="itemPhone">{{item.phone}}</td>
-            <td class="itemDescr">{{item.description}}</td>
-        </tr>
-        {% endfor %}
-        <tr class="bg-white"> 
-            <td class="itemName"></td>
-            <td class="itemEmail"></td>
-            <td class="itemPhone"></td>
-            <td class="itemDescr"></td>
-        </tr>
-       </tbody>
-       
-    </table>
+    <div class="contactList"></div>
    
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
