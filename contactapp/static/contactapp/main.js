@@ -19,16 +19,15 @@ function toValidate() {
 
     if (nameCheck.test(idName)) {
         errName.innerHTML = " "
-    }
-    else {
+    } else {
+
         if (idName == '') {
             errName.innerHTML = "Cannot leave empty"
-        }
-        else {
-            if (isNaN(idName) == false) {
+        } else {
+
+            if ( false == isNaN(idName)) {
                 errName.innerHTML = "Invalid name"
-            }
-            else {
+            } else {
                 errName.innerHTML = "Must contain more than 3 characters"
             }
         }
@@ -38,12 +37,11 @@ function toValidate() {
 
     if (emailCheck.test(idEmail)) {
         errEmail.innerHTML = " "
-    }
-    else {
+    } else {
+
         if (idEmail == '') {
             errEmail.innerHTML = "Cannot leave empty"
-        }
-        else {
+        } else {
             errEmail.innerHTML = "Invalid email format"
         }
         flag = false
@@ -52,8 +50,7 @@ function toValidate() {
 
     if (phoneCheck.test(idPhone)) {
         errPhone.innerHTML = " "
-    }
-    else {
+    } else {
         errPhone.innerHTML = "Invalid format. Minimum 10 characters required "
         flag = false
     }
@@ -61,22 +58,20 @@ function toValidate() {
 
     if (idDescr.length > 20) {
         errDescr.innerHTML = " "
-    }
-    else {
+    } else {
+
         if (idDescr.length == 0) {
             errDescr.innerHTML = "Cannot leave empty"
-        }
-        else {
+        } else {
             errDescr.innerHTML = "Minimum 20 characters required"
         }
         flag = false
     }
 
-    if (flag == true) {
+    if (flag) {
         $('.response').css('color', 'green')
         response.innerHTML = "Form submitted successfully"
-    }
-    else {
+    } else {
         $('.response').css('color', 'red')
         response.innerHTML = "Error occured"
     }
@@ -108,12 +103,11 @@ function getData() {
 $(document).ready(function () {
     getData()
     $('#submit').click(function (e) {
+        e.preventDefault()
 
         var flag = toValidate()
 
-        e.preventDefault()
-
-        if (flag == true) {
+        if (flag) {
 
             $.ajax({
                 type: 'post',

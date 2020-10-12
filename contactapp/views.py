@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from django.http.response import JsonResponse
+from django.shortcuts import render
+from django.http.response import HttpResponse
 from rest_framework import status
 
 from contactapp.models import Contacts
@@ -10,11 +10,6 @@ def index(request):
     return render(request, 'contactapp/index.html')
 
 def fetch(request):
-   ''' name = request.GET.get('name')
-    email = request.GET.get('email')
-    phone = request.GET.get('phone')
-    description = request.GET.get('description')
-    details = {'name': name, 'email': email, 'phone': phone, 'description': description}'''
     items = Contacts.objects.all()
     context = {'items': items}
     return render(request,'contactapp/contactlist.html',context)
@@ -33,8 +28,7 @@ def completed(request):
           phone = phone,
           description = description
       )
-      return redirect('index')
-
+      return HttpResponse(status=200)
 
 
        
