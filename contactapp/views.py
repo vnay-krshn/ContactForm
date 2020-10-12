@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.parsers import JSONParser
-from .forms import contactForm
 from django.http import HttpResponse
 
 from contactapp.models import Contacts
