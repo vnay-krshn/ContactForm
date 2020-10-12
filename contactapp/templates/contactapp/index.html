@@ -41,8 +41,15 @@
                 <th>Description</th>
             </tr>
         </thead>
-     
         <tbody>
+        {% for item in items %}
+        <tr class="bg-white"> 
+            <td class="itemName">{{item.name}}</td>
+            <td class="itemEmail">{{item.email}}</td>
+            <td class="itemPhone">{{item.phone}}</td>
+            <td class="itemDescr">{{item.description}}</td>
+        </tr>
+        {% endfor %}
         <tr class="bg-white"> 
             <td class="itemName"></td>
             <td class="itemEmail"></td>

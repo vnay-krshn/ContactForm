@@ -54,7 +54,7 @@ function toValidate(){
         errPhone.innerHTML = " " 
          }
     else{
-        errPhone.innerHTML = "Invalid phone number"
+        errPhone.innerHTML = "Invalid format. Minimum 10 characters required "
         flag = false
         }
 
